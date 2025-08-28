@@ -1,26 +1,133 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800;900&family=Exo+2:wght@400;600;700;800&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Arcade Theme Colors */
+  --arcade-primary: #00ff41;      /* Matrix green */
+  --arcade-secondary: #ff6b00;    /* Electric orange */
+  --arcade-tertiary: #ff0080;     /* Neon pink */
+  --arcade-yellow: #ffff00;       /* Bright yellow */
+  --arcade-cyan: #00ffff;         /* Electric cyan */
+  --arcade-purple: #8a2be2;       /* Blue violet */
+  
+  /* Sports Theme Colors */
+  --sport-red: #ff1744;           /* Vibrant red */
+  --sport-blue: #2196f3;          /* Sporty blue */
+  --sport-green: #4caf50;         /* Victory green */
+  
+  /* Background Colors */
+  --bg-dark: #0a0a0a;
+  --bg-darker: #000000;
+  --bg-light: #1a1a1a;
+  --bg-card: #1e1e1e;
+  
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-accent: var(--arcade-primary);
+  
+  /* Gradients */
+  --gradient-arcade: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+  --gradient-neon: linear-gradient(45deg, var(--arcade-primary), var(--arcade-cyan), var(--arcade-tertiary));
+  --gradient-sport: linear-gradient(135deg, var(--sport-blue), var(--sport-red));
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: 'Exo 2', system-ui, sans-serif;
+}
+
+/* Arcade Text Effects */
+.text-neon {
+  color: var(--arcade-primary);
+  text-shadow: 0 0 5px var(--arcade-primary), 0 0 10px var(--arcade-primary), 0 0 15px var(--arcade-primary);
+}
+
+.text-neon-orange {
+  color: var(--arcade-secondary);
+  text-shadow: 0 0 5px var(--arcade-secondary), 0 0 10px var(--arcade-secondary);
+}
+
+.text-neon-pink {
+  color: var(--arcade-tertiary);
+  text-shadow: 0 0 5px var(--arcade-tertiary), 0 0 10px var(--arcade-tertiary);
+}
+
+.text-neon-yellow {
+  color: var(--arcade-yellow);
+  text-shadow: 0 0 5px var(--arcade-yellow), 0 0 10px var(--arcade-yellow);
+}
+
+/* Arcade Buttons */
+.btn-arcade {
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 2px solid var(--arcade-primary);
+  background: linear-gradient(45deg, transparent, rgba(0, 255, 65, 0.1));
+  color: var(--arcade-primary);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+}
+
+.btn-arcade:hover {
+  background: var(--arcade-primary);
+  color: var(--bg-darker);
+  box-shadow: 0 0 20px var(--arcade-primary), inset 0 0 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-sport {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: var(--gradient-sport);
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+}
+
+.btn-sport:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+}
+
+/* Arcade Cards */
+.card-arcade {
+  background: var(--bg-card);
+  border: 2px solid var(--arcade-primary);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+/* Hockey Rink Effect */
+.hockey-bg {
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(33, 150, 243, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 23, 68, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+}
+
+/* Scoreboard Effect */
+.scoreboard {
+  font-family: 'Orbitron', monospace;
+  background: var(--bg-darker);
+  border: 3px solid var(--arcade-yellow);
+  box-shadow: 
+    inset 0 0 20px rgba(255, 255, 0, 0.2),
+    0 0 30px rgba(255, 255, 0, 0.3);
+}
+
+/* Hearts with Hockey Theme */
+.heart-hockey {
+  filter: drop-shadow(0 0 5px var(--sport-red));
+  transition: all 0.3s ease;
+}
+
+.heart-hockey.lost {
+  filter: grayscale(1) opacity(0.3);
 }

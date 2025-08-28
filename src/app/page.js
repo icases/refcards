@@ -1,103 +1,104 @@
-import Image from "next/image";
+
+"use client";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { fetchLeaderboard } from "../utils/dbQueries";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const router = useRouter();
+  const [leaderboard, setLeaderboard] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+  async function loadLeaderboard() {
+    try {
+      const { data, error } = await fetchLeaderboard();
+      
+      if (error) {
+        console.error("Error loading leaderboard:", error);
+        return;
+      }
+      
+      setLeaderboard(data);
+    } catch (err) {
+      console.error("Error loading leaderboard:", err);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    loadLeaderboard();
+  }, []);
+
+  return (
+    <div className="min-h-screen hockey-bg flex flex-col items-center justify-center p-6 font-sans">
+      {/* Banner */}
+      <header className="mb-10 text-center">
+        <h1 className="text-5xl font-bold text-neon mb-4 font-mono tracking-wider">
+          REFCARDS
+        </h1>
+        <h2 className="text-2xl text-neon-orange mb-2 font-bold">
+          ROLLER HOCKEY REFEREE GESTURES
+        </h2>
+        <p className="text-lg text-gray-300 font-semibold">
+          🏒 Master the Art of Officiating 🏒
+        </p>
+      </header>
+
+      {/* Leaderboard */}
+      <section className="card-arcade w-full max-w-md rounded-xl p-6 mb-10">
+        <h2 className="text-2xl font-bold text-neon-yellow mb-6 text-center font-mono scoreboard p-3 rounded">
+          🏆 HALL OF FAME 🏆
+        </h2>
+        
+        {loading ? (
+          <div className="text-center text-neon-orange py-8 font-mono text-lg">
+            LOADING SCORES...
+          </div>
+        ) : leaderboard.length === 0 ? (
+          <div className="text-center text-gray-400 py-8">
+            <div className="mb-2 text-neon-pink font-bold">NO SCORES YET!</div>
+            <div className="text-sm">🥅 BE THE FIRST TO PLAY! 🥅</div>
+          </div>
+        ) : (
+          <div className="space-y-2 font-mono">
+            {leaderboard.map((player, idx) => (
+              <div key={`${player.player_name}-${idx}`} className="flex justify-between items-center px-3 py-2 bg-gray-900 rounded border border-gray-700 hover:border-orange-500 transition-colors">
+                <span className="flex items-center">
+                  <span className="text-neon-yellow font-bold mr-3">
+                    {idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : `${idx + 1}.`}
+                  </span>
+                  <span className="text-white font-semibold">{player.player_name}</span>
+                </span>
+                <span className="text-neon font-bold text-lg">{player.score.toLocaleString()}</span>
+              </div>
+            ))}
+            {/* Fill empty slots if less than 10 entries */}
+            {Array.from({ length: 10 - leaderboard.length }, (_, i) => (
+              <div key={`empty-${i}`} className="flex justify-between items-center px-3 py-2 bg-gray-800 rounded border border-gray-600">
+                <span className="flex items-center">
+                  <span className="text-gray-500 mr-3">{leaderboard.length + i + 1}.</span>
+                  <span className="text-gray-500">---</span>
+                </span>
+                <span className="text-gray-500 font-mono">000000</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+
+      {/* New Game Button */}
+      <button
+        className="btn-sport py-4 px-12 rounded-full text-xl font-bold shadow-lg transition-all transform hover:scale-105"
+        onClick={() => router.push("/game")}
+      >
+        🏒 START GAME 🏒
+      </button>
+      
+      <div className="mt-6 text-center text-gray-400 text-sm">
+        <p className="mb-1">Test your knowledge of roller hockey referee signals</p>
+        <p className="text-neon-orange">Get ready to officiate like a pro! 🥅</p>
+      </div>
     </div>
   );
 }

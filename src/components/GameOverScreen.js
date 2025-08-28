@@ -20,17 +20,17 @@ export default function GameOverScreen({
   return (
     <div className="fixed inset-0 bg-black bg-opacity-95 flex flex-col items-center justify-center p-4">
       <div className="text-center mb-8">
-        <h1 className="text-6xl text-red-500 mb-4 font-bold">GAME OVER</h1>
+        <h1 className="text-6xl text-accent-red mb-4 font-bold font-mono">FIN DEL JUEGO</h1>
         
-        <div className="text-2xl text-yellow-400 mb-6">
-          <div className="mb-2">SCORE: {score.toLocaleString()}</div>
-          <div className="mb-2">BEST STREAK: {streak}</div>
-          {timeBonus > 0 && <div className="mb-2">TIME BONUS: +{timeBonus.toLocaleString()}</div>}
+        <div className="text-2xl text-gold mb-6 font-mono">
+          <div className="mb-2">PUNTUACIÓN: {score.toLocaleString()}</div>
+          <div className="mb-2">MEJOR RACHA: {streak}</div>
+          {timeBonus > 0 && <div className="mb-2">BONUS DE TIEMPO: +{timeBonus.toLocaleString()}</div>}
         </div>
         
         {isHighScore && (
-          <div className="text-3xl text-green-400 mb-4 animate-pulse">
-            HIGH SCORE!
+          <div className="text-3xl text-primary-blue mb-4 animate-pulse font-mono">
+            ¡NUEVO RÉCORD!
           </div>
         )}
       </div>
@@ -41,9 +41,9 @@ export default function GameOverScreen({
         {isHighScore && !scoreSaved && (
           <button
             onClick={onSaveScore}
-            className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-500 text-xl font-bold"
+            className="btn-primary px-6 py-3 text-xl font-bold"
           >
-            SAVE SCORE
+            GUARDAR PUNTUACIÓN
           </button>
         )}
         
@@ -51,16 +51,16 @@ export default function GameOverScreen({
           <>
             <button
               onClick={onPlayAgain}
-              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-500 text-xl font-bold"
+              className="btn-primary px-6 py-3 text-xl font-bold"
             >
-              PLAY AGAIN
+              JUGAR DE NUEVO
             </button>
             
             <button
               onClick={onGoHome}
-              className="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-500 text-xl font-bold"
+              className="btn-secondary px-6 py-3 text-xl font-bold"
             >
-              HOME
+              INICIO
             </button>
           </>
         )}

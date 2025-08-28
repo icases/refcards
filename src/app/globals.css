@@ -1,35 +1,29 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800;900&family=Exo+2:wght@400;600;700;800&display=swap');
 
 :root {
-  /* Arcade Theme Colors */
-  --arcade-primary: #00ff41;      /* Matrix green */
-  --arcade-secondary: #ff6b00;    /* Electric orange */
-  --arcade-tertiary: #ff0080;     /* Neon pink */
-  --arcade-yellow: #ffff00;       /* Bright yellow */
-  --arcade-cyan: #00ffff;         /* Electric cyan */
-  --arcade-purple: #8a2be2;       /* Blue violet */
-  
-  /* Sports Theme Colors */
-  --sport-red: #ff1744;           /* Vibrant red */
-  --sport-blue: #2196f3;          /* Sporty blue */
-  --sport-green: #4caf50;         /* Victory green */
+  /* Modern Sports Theme Colors */
+  --primary-blue: #1976d2;        /* Professional blue */
+  --accent-orange: #ff6b00;       /* Hockey orange */
+  --accent-red: #d32f2f;          /* Hockey red */
+  --accent-yellow: #ffa000;       /* Gold/yellow */
+  --ice-blue: #e3f2fd;            /* Light ice blue */
+  --steel-gray: #546e7a;          /* Steel gray */
   
   /* Background Colors */
   --bg-dark: #0a0a0a;
   --bg-darker: #000000;
-  --bg-light: #1a1a1a;
-  --bg-card: #1e1e1e;
+  --bg-light: #1e1e1e;
+  --bg-card: #2a2a2a;
+  --bg-surface: #424242;
   
   /* Text Colors */
   --text-primary: #ffffff;
-  --text-secondary: #cccccc;
-  --text-accent: var(--arcade-primary);
+  --text-secondary: #e0e0e0;
+  --text-muted: #9e9e9e;
   
   /* Gradients */
-  --gradient-arcade: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
-  --gradient-neon: linear-gradient(45deg, var(--arcade-primary), var(--arcade-cyan), var(--arcade-tertiary));
-  --gradient-sport: linear-gradient(135deg, var(--sport-blue), var(--sport-red));
+  --gradient-sport: linear-gradient(135deg, var(--primary-blue), var(--accent-red));
+  --gradient-ice: linear-gradient(135deg, var(--ice-blue), var(--primary-blue));
 }
 
 body {
@@ -38,44 +32,63 @@ body {
   font-family: 'Exo 2', system-ui, sans-serif;
 }
 
-/* Arcade Text Effects */
-.text-neon {
-  color: var(--arcade-primary);
-  text-shadow: 0 0 5px var(--arcade-primary), 0 0 10px var(--arcade-primary), 0 0 15px var(--arcade-primary);
+/* Modern Sports Text Effects */
+.text-primary-blue {
+  color: var(--primary-blue);
+  font-weight: 600;
 }
 
-.text-neon-orange {
-  color: var(--arcade-secondary);
-  text-shadow: 0 0 5px var(--arcade-secondary), 0 0 10px var(--arcade-secondary);
+.text-accent-orange {
+  color: var(--accent-orange);
+  font-weight: 600;
 }
 
-.text-neon-pink {
-  color: var(--arcade-tertiary);
-  text-shadow: 0 0 5px var(--arcade-tertiary), 0 0 10px var(--arcade-tertiary);
+.text-accent-red {
+  color: var(--accent-red);
+  font-weight: 600;
 }
 
-.text-neon-yellow {
-  color: var(--arcade-yellow);
-  text-shadow: 0 0 5px var(--arcade-yellow), 0 0 10px var(--arcade-yellow);
+.text-gold {
+  color: var(--accent-yellow);
+  font-weight: 700;
 }
 
-/* Arcade Buttons */
-.btn-arcade {
-  font-family: 'Orbitron', monospace;
+.text-glow {
+  text-shadow: 0 0 8px currentColor;
+}
+
+/* Modern Sports Buttons */
+.btn-primary {
+  font-family: 'Exo 2', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  border: 2px solid var(--arcade-primary);
-  background: linear-gradient(45deg, transparent, rgba(0, 255, 65, 0.1));
-  color: var(--arcade-primary);
+  border: 2px solid var(--primary-blue);
+  background: var(--primary-blue);
+  color: white;
   transition: all 0.3s ease;
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
 }
 
-.btn-arcade:hover {
-  background: var(--arcade-primary);
-  color: var(--bg-darker);
-  box-shadow: 0 0 20px var(--arcade-primary), inset 0 0 10px rgba(0, 0, 0, 0.2);
+.btn-primary:hover {
+  background: #1565c0;
+  border-color: #1565c0;
+  box-shadow: 0 6px 16px rgba(25, 118, 210, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: 2px solid var(--steel-gray);
+  background: transparent;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--steel-gray);
+  border-color: var(--steel-gray);
   transform: translateY(-2px);
 }
 
@@ -87,19 +100,19 @@ body {
   border: none;
   color: white;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+  box-shadow: 0 4px 15px rgba(25, 118, 210, 0.3);
 }
 
 .btn-sport:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+  box-shadow: 0 6px 20px rgba(25, 118, 210, 0.4);
 }
 
-/* Arcade Cards */
-.card-arcade {
+/* Modern Cards */
+.card-modern {
   background: var(--bg-card);
-  border: 2px solid var(--arcade-primary);
-  box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+  border: 1px solid var(--steel-gray);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
@@ -107,24 +120,24 @@ body {
 /* Hockey Rink Effect */
 .hockey-bg {
   background: 
-    radial-gradient(circle at 25% 25%, rgba(33, 150, 243, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 75% 75%, rgba(255, 23, 68, 0.1) 0%, transparent 50%),
-    linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    radial-gradient(circle at 25% 25%, rgba(25, 118, 210, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(211, 47, 47, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, #0a0a0a 0%, #1e1e1e 50%, #0a0a0a 100%);
 }
 
 /* Scoreboard Effect */
 .scoreboard {
   font-family: 'Orbitron', monospace;
   background: var(--bg-darker);
-  border: 3px solid var(--arcade-yellow);
+  border: 2px solid var(--primary-blue);
   box-shadow: 
-    inset 0 0 20px rgba(255, 255, 0, 0.2),
-    0 0 30px rgba(255, 255, 0, 0.3);
+    inset 0 0 15px rgba(25, 118, 210, 0.2),
+    0 0 20px rgba(25, 118, 210, 0.3);
 }
 
 /* Hearts with Hockey Theme */
 .heart-hockey {
-  filter: drop-shadow(0 0 5px var(--sport-red));
+  filter: drop-shadow(0 0 3px var(--accent-red));
   transition: all 0.3s ease;
 }
 

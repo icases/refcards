@@ -1,0 +1,19 @@
+{
+  "name": "RefCards - Hockey Referee Gestures",
+  "short_name": "RefCards",
+  "description": "Aprende las señales del árbitro de hockey sobre patines",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#1976d2",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 100 100'%3e%3ctext y='0.9em' font-size='90'%3e🏒%3c/text%3e%3c/svg%3e",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    }
+  ],
+  "orientation": "portrait",
+  "categories": ["games", "sports", "education"]
+}

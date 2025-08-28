@@ -11,15 +11,15 @@ export default function ArcadeLeaderboard({
   onSaveScore 
 }) {
   return (
-    <div className="scoreboard w-full max-w-md mb-6 p-6 rounded-lg">
-      <h2 className="text-2xl text-center text-neon-yellow mb-4 font-mono">
-        🏆 HIGH SCORES 🏆
+    <div className="scoreboard w-full max-w-xs mb-4 p-4 rounded-lg">
+      <h2 className="text-lg text-center text-gold mb-3 font-mono">
+        🏆 MEJORES PUNTUACIONES 🏆
       </h2>
       
       {loading ? (
-        <div className="text-center text-neon-orange font-mono">LOADING...</div>
+        <div className="text-center text-accent-orange font-mono text-sm">CARGANDO...</div>
       ) : (
-        <div className="space-y-1 font-mono">
+        <div className="space-y-1 font-mono text-sm">
           {Array.from({ length: 10 }, (_, i) => {
             // Create a combined list with current player's score inserted at correct position
             const allScores = [...leaderboard];
@@ -32,12 +32,12 @@ export default function ArcadeLeaderboard({
             const isCurrentScore = entry?.isNewPlayer && !scoreSaved;
             
             return (
-              <div key={i} className={`flex justify-between text-lg ${
+              <div key={i} className={`flex justify-between text-sm ${
                 isCurrentScore 
-                  ? 'text-black bg-neon px-2 animate-pulse font-bold' 
+                  ? 'text-black bg-gold px-2 animate-pulse font-bold' 
                   : 'text-white'
               }`}>
-                <span className="text-neon-yellow">
+                <span className="text-gold">
                   {(i + 1).toString().padStart(2, '0')}.
                 </span>
                 {isCurrentScore && !scoreSaved ? (
@@ -46,17 +46,17 @@ export default function ArcadeLeaderboard({
                     value={playerName}
                     onChange={(e) => setPlayerName(e.target.value.toUpperCase().slice(0, 10))}
                     placeholder="__________"
-                    className="bg-transparent border-none text-center font-bold w-24 focus:outline-none"
+                    className="bg-white border-2 border-black text-black text-center font-bold w-20 focus:outline-none rounded text-xs"
                     maxLength={10}
                     autoFocus
                   />
                 ) : (
-                  <span className="text-neon">
-                    {entry ? entry.player_name.slice(0, 10).toUpperCase().padEnd(10, '.') : '..........'}
+                  <span className="text-primary-blue text-xs">
+                    {entry ? entry.player_name.slice(0, 8).toUpperCase().padEnd(8, '.') : '........'}
                   </span>
                 )}
-                <span className="text-neon-orange">
-                  {entry ? entry.score.toString().padStart(6, '0') : '000000'}
+                <span className="text-accent-orange text-xs">
+                  {entry ? entry.score.toString().padStart(5, '0') : '00000'}
                 </span>
               </div>
             );

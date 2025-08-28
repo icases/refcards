@@ -1,0 +1,106 @@
+[
+  {
+    "title": "Jugador en el área",
+    "desc": "Saque de centro. Si un atacante entra sin pucko sin ser empujado por undefensor, el juego se detieney el saque neutral se realizaen el centro de la pista"
+  },
+  {
+    "title": "Penalización diferida",
+    "desc": "Equipo sin el puck hace falta El juego sigue hasta que elequipo infractor recupereel puck. Si se marca lapenalización menor no secumple"
+  },
+  {
+    "title": "Cambio",
+    "desc": "Cambio de jugadores Equipo visitante tiene cinco segundos para realizar cambio. El equipo local dispone de cinco segundos más."
+  },
+  {
+    "title": "Gol",
+    "desc": "Saque de centro. Se cancela la primera penalización menor del equipo querecibe el gol. Si la penalización es mayor o de mala conducta, no se cancela."
+  },
+  {
+    "title": "Tiempo Muerto",
+    "desc": "El juego se para 3 min. Solo lo puede solicitar el capitán, los asistentes o ele ntrenador"
+  },
+  {
+    "title": "Carga",
+    "desc": "Sanción menor: 2 min. Embestir a un rival corriendo, saltando o empujando con el cuerpo. Si es peligrosa o causa lesión→5 min+ MCJ."
+  },
+  {
+    "title": "Carga con el stick",
+    "desc": "Sanción menor: 2 min. SS. Empujar a un rival con el stick. Si hay lesión→5 min+ MCJ. A la 3ª sanción de stick: expulsión (otro cumplela penalización)."
+  },
+  {
+    "title": "Conducta antideportiva",
+    "desc": "Sanción mayor de 10 min. Conducta antideportiva o retraso. Reincidencia: expulsión. Portero cruza mediocampo→2 min. Mover porteŕıa al final→penalti."
+  },
+  {
+    "title": "Agarrar",
+    "desc": "Sanción menor: 2 min. Sujetar a un rival e impedirsu movimiento. Puede sancionarse con 5 min + malaconducta."
+  },
+  {
+    "title": "Pase con la mano",
+    "desc": "Saque neutral. Saque neutral en el centro si el pase con la mano fue enzona de ataque o en la zona más cercana si ocurrió en defensa"
+  },
+  {
+    "title": "Golpear conel taco",
+    "desc": "Sanción mayor: 5 min + MCJ. SS.  Golpear con el taco del stick. A la 3ª sanción de stick:expulsión (otro cumple lapenalización)."
+  },
+  {
+    "title": "Carga por la espalda",
+    "desc": "Sanción menor: 2 min. Cargar por la espalda a un rival. Si lesión→expulsión 5 min + MCJ."
+  },
+  {
+    "title": "Tiro de penalti",
+    "desc": "1 vs portero El jugador designado avanza desde el centro y tira. Tras el tiro: saque en el centro. Si hay gol→no se aplica lasanción menor."
+  },
+  {
+    "title": "No gol, no falta",
+    "desc": "El juego continua. Ante una situación confusael árbitro señala que no hay gol o no hay falta"
+  },
+  {
+    "title": "Codazo",
+    "desc": "Sanción menor: 2 min. Uso del codo para golpear a un adversario. Si causa lesión→expulsión de5 min + MCJ."
+  },
+  {
+    "title": "Golpear puntadel stick",
+    "desc": "Doble menor de 2+2 min SS Golpear con la punta delstick. Si hay lesión → pena-lización de partido. A la 3ªsanción de stick: expulsión(otro cumple la penalización)"
+  },
+  {
+    "title": "Mala conducta",
+    "desc": "Expulsión 10 min Lenguaje, gestos o protestasreiteradas. Se le sustituye,aśı que no deja al equipo eninferioridad."
+  },
+  {
+    "title": "Interferencia",
+    "desc": "Sanción menor: 2 min. Obstaculizar a un rival sin posesión del puck. Si provoca lesión → expulsiónde 5 min + MCJ."
+  },
+  {
+    "title": "Cambio ilegal",
+    "desc": "Sanción menor: 2 min- Más de 4 en pista o cambio antes de 3m del banquillo. Si es deliberado en los 2 últimos min → penalti."
+  },
+  {
+    "title": "Rodillazo",
+    "desc": "Sanción menor: 2 min. Uso de la rodilla para derribar o golpear al rival.Si lesión → expulsión de5 min + MCJ.."
+  },
+  {
+    "title": "Penalización de partido",
+    "desc": "Expulsión El jugador es expulsadoel resto del encuentro por infracción grave, acumulaciónde faltas o mala conducta.Un sustituto cumple 5 minpor él."
+  },
+  {
+    "title": "Stick alto",
+    "desc": "Sanción menor: 2 min. SS Usar el stick por encimade los hombros y tocar o poner en peligro a un rival.Si lesión → expulsión de5 min + MCJ."
+  },
+  {
+    "title": "Violencia innecesaria",
+    "desc": "Sanción menor: 2 min. Golpes o choques demasiado fuertes sin necesidad. Si lesión → expulsión de5 min + MCJ."
+  },
+  {
+    "title": "Enganchar",
+    "desc": "Sanción menor: 2 min. Cuando un jugador sujeta con el stick al adversariopara impedirle avanzar. Si lesión → expulsión de5 min + MCJ."
+  },
+  {
+    "title": "Slashing",
+    "desc": "Sanción menor: 2 min. SS Golpear o intentar golpearcon el stick. Si lesión →expulsión de 5 min + MCJ."
+  },
+  {
+    "title": "Zancadilla",
+    "desc": "Sanción menor: 2 min. Hacer tropezar a un rivalcon stick, pie o cuerpo.Si lesión → expulsión de5 min + MCJ."
+  }
+]

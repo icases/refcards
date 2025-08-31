@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { playSound } from '../utils/soundUtils';
+import { getImageUrl } from '../utils/imageUtils';
 
 export default function QuestionCard({ question, options, selected, onSelect }) {
   const [imageLoading, setImageLoading] = useState(true);
@@ -25,7 +26,7 @@ export default function QuestionCard({ question, options, selected, onSelect }) 
       </h1>
       
       <div className="card-modern p-4 rounded-xl mb-4 mx-2">
-        {question.image_path ? (
+        {question?.image_path ? (
           <div className="relative">
             {imageLoading && (
               <div className="w-48 h-48 flex items-center justify-center bg-gray-800 mx-auto rounded-lg border-2 border-gray-600">
@@ -33,12 +34,8 @@ export default function QuestionCard({ question, options, selected, onSelect }) 
               </div>
             )}
             <Image
-              src={
-                question.image_path.startsWith("http")
-                  ? question.image_path
-                  : `/gestures/${question.image_path}`
-              }
-              alt={question.name}
+              src={getImageUrl(question.image_path)}
+              alt={question?.name || 'Gesture'}
               width={192}
               height={192}
               className={`w-48 h-48 object-contain mx-auto border-2 border-steel-gray rounded-lg bg-gray-900 shadow-lg ${imageLoading ? 'hidden' : ''}`}

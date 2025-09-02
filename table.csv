@@ -1,0 +1,27 @@
+"name",description,minor/major,canUpgradetoMajor,penaltyTime,isStickPenalty
+"Cambio ilegal","Más de 4 en pista o cambio antes de 3 m del banquillo. Si es deliberado en los 2 últimos minutos, penalti.",minor,yes,2,false
+"Agarrar","Sujetar a un rival e impedir su movimiento. Puede sancionarse con mala conducta.",minor,yes,2,false
+"Cambio","El equipo visitante tiene cinco segundos para realizar el cambio. El equipo local dispone de cinco segundos más.",none,no,0,false
+"Carga","Embestir a un rival corriendo, saltando o empujando con el cuerpo. Si es peligrosa o causa lesión, puede ser mayor.",minor,yes,2,false
+"Carga con el stick","Empujar a un rival con el stick. A la tercera sanción de stick: expulsión.",minor,yes,2,true
+"Carga por la espalda","Cargar por la espalda a un rival. Si hay lesión, expulsión.",minor,yes,2,false
+"Codazo","Uso del codo para golpear a un adversario. Si causa lesión, expulsión.",minor,yes,2,false
+"Conducta antideportiva","Conducta antideportiva o retraso. Reincidencia: expulsión. El portero cruza medio campo o mueve la portería al final.",major,no,10,false
+"Enganchar","Sujetar con el stick al adversario para impedirle avanzar. Si hay lesión, expulsión.",minor,yes,2,true
+"Gol","Se cancela la primera penalización menor del equipo que recibe el gol. Si la penalización es mayor o de mala conducta, no se cancela.",none,no,0,false
+"Golpear con el taco","Golpear con el taco del stick. A la tercera sanción de stick: expulsión.",major,no,5,true
+"Golpear punta del stick","Golpear con la punta del stick. Si hay lesión, penalización de partido. A la tercera sanción de stick: expulsión.",minor,yes,4,true
+"Penalización de partido","El jugador es expulsado el resto del encuentro por infracción grave, acumulación de faltas o mala conducta.",major,no,5,false
+"Penalización diferida","El juego sigue hasta que el equipo infractor recupere el puck.",none,no,0,false
+"Interferencia","Obstaculizar a un rival sin posesión del puck. Si provoca lesión, expulsión.",minor,yes,2,false
+"Jugador en el área","Si un atacante entra sin puck o sin ser empujado por un defensor, el juego se detiene y el saque neutral se realiza en el centro de la pista.",none,no,0,false
+"Mala conducta","Lenguaje, gestos o protestas reiteradas. Se le sustituye, así que no deja al equipo en inferioridad.",major,no,10,false
+"No gol, no falta","Ante una situación confusa el árbitro señala que no hay gol o no hay falta.",none,no,0,false
+"Pase con la mano","Saque neutral en el centro si el pase con la mano fue en zona de ataque o en la zona más cercana si ocurrió en defensa.",none,no,0,false
+"Rodillazo","Uso de la rodilla para derribar o golpear al rival. Si hay lesión, expulsión.",minor,yes,2,false
+"Slashing","Golpear o intentar golpear con el stick. Si hay lesión, expulsión.",minor,yes,2,true
+"Stick alto","Usar el stick por encima de los hombros y tocar o poner en peligro a un rival. Si hay lesión, expulsión.",minor,yes,2,true
+"Tiro de penalti","El jugador designado avanza desde el centro y tira. Tras el tiro: saque en el centro.",none,no,0,false
+"Violencia innecesaria","Golpes o choques demasiado fuertes sin necesidad. Si hay lesión, expulsión.",minor,yes,2,false
+"Zancadilla","Hacer tropezar a un rival con stick, pie o cuerpo. Si hay lesión, expulsión.",minor,yes,2,true
+"Tiempo Muerto","Solo lo puede solicitar el capitán, los asistentes o el entrenador.",none,no,3,false

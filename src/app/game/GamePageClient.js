@@ -167,8 +167,8 @@ export default function GamePageClient() {
 
   if (loading) {
     return (
-      <div className="min-h-screen hockey-bg flex items-center justify-center">
-        <div className="text-primary-blue text-2xl font-mono animate-pulse">
+      <div className="min-h-screen bg-bg-dark flex items-center justify-center">
+        <div className="text-primary-blue text-2xl font-sporty animate-pulse">
           🏒 CARGANDO JUEGO... 🏒
         </div>
       </div>
@@ -179,17 +179,17 @@ export default function GamePageClient() {
     const isHighScore = checkIsHighScore(score, leaderboard);
     
     return (
-      <div className="min-h-screen bg-black text-white font-mono flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-bg-dark text-primary-blue font-sporty flex flex-col items-center justify-center p-4">
         {/* Arcade Header */}
         <div className="text-center mb-8">
-          <h1 className="text-6xl font-bold mb-4 text-accent-red font-mono animate-pulse">
+          <h1 className="text-6xl font-bold mb-4 text-accent-red font-sporty animate-pulse">
             🏒 FIN DEL JUEGO 🏒
           </h1>
-          <div className="text-2xl mb-4 text-gold font-mono">
+          <div className="text-2xl mb-4 text-gold font-sporty">
             PUNTUACIÓN FINAL: {score.toLocaleString()}
           </div>
           {isHighScore && (
-            <div className="text-3xl text-primary-blue animate-pulse font-bold">
+            <div className="text-3xl text-primary-blue animate-pulse font-bold font-sporty">
               🏆 ¡NUEVO RÉCORD! 🏆
             </div>
           )}
@@ -210,10 +210,10 @@ export default function GamePageClient() {
         <div className="text-center space-y-4">
           {isHighScore && !scoreSaved && (
             <>
-              <div className="text-gold text-xl mb-2 font-bold animate-pulse">
+              <div className="text-gold text-xl mb-2 font-bold font-sporty animate-pulse">
                 🎯 ¡INTRODUCE TU NOMBRE! 🎯
               </div>
-              <div className="text-sm mb-4 text-gray-400">HASTA 10 CARACTERES</div>
+              <div className="text-sm mb-4 text-gray-500 font-sporty">HASTA 10 CARACTERES</div>
               <button
                 className="btn-primary py-3 px-8 text-lg font-bold"
                 onClick={saveScore}
@@ -225,7 +225,7 @@ export default function GamePageClient() {
           )}
           
           {scoreSaved && (
-            <div className="text-primary-blue text-xl mb-4 font-bold animate-pulse">
+            <div className="text-primary-blue text-xl mb-4 font-bold font-sporty animate-pulse">
               ✅ SCORE SAVED! ✅
             </div>
           )}
@@ -251,19 +251,19 @@ export default function GamePageClient() {
   
   if (!question) {
     return (
-      <div className="min-h-screen hockey-bg flex flex-col items-center justify-center text-center p-6">
+      <div className="min-h-screen bg-bg-dark flex flex-col items-center justify-center text-center p-6">
         <div className="card-modern p-8 rounded-xl">
-          <div className="text-accent-red text-2xl mb-4 font-mono font-bold">
+          <div className="text-accent-red text-2xl mb-4 font-sporty font-bold">
             ❌ ERROR AL CARGAR PREGUNTA ❌
           </div>
-          <div className="text-gray-300 mb-4 font-sans">Esto puede ser debido a:</div>
-          <ul className="text-gray-400 text-left mb-6 space-y-1">
+          <div className="text-gray-500 mb-4 font-sporty">Esto puede ser debido a:</div>
+          <ul className="text-gray-400 text-left mb-6 space-y-1 font-sporty">
             <li>• Base de datos de gestos vacía</li>
             <li>• Error de conexión a Supabase</li>
             <li>• Problema con variables de entorno</li>
           </ul>
           <button 
-            className="btn-primary py-3 px-6"
+            className="btn-primary py-3 px-6 font-sporty"
             onClick={fetchQuestion}
           >
             🔄 INTENTAR DE NUEVO
@@ -274,7 +274,7 @@ export default function GamePageClient() {
   }
 
   return (
-    <div className="min-h-screen hockey-bg flex flex-col items-center justify-start p-2 py-4">
+  <div className="min-h-screen bg-bg-dark flex flex-col items-center justify-start p-2 py-4 font-sporty">
       <GameStats hearts={hearts} score={score} streak={streak} />
       
       <QuestionCard 
@@ -285,12 +285,12 @@ export default function GamePageClient() {
       />
       
       {result && (
-        <div className={`mt-3 text-xl font-bold text-center font-mono ${
+        <div className={`mt-3 text-xl font-bold text-center font-sporty ${
           result.includes("Correcto") ? "text-primary-blue animate-pulse" : "text-red-500"
         }`}>
           {result.includes("Correcto") ? "🎯 ¡CORRECTO!" : "❌ ¡INCORRECTO!"}
           {result.includes("Correcto") && streak > 0 && streak % 5 === 0 && hearts < 3 && (
-            <div className="text-sm text-accent-orange mt-1 animate-pulse">🏒 ¡VIDA RESTAURADA!</div>
+            <div className="text-sm text-accent-orange mt-1 animate-pulse font-sporty">🏒 ¡VIDA RESTAURADA!</div>
           )}
         </div>
       )}

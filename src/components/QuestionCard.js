@@ -21,16 +21,16 @@ export default function QuestionCard({ question, options, selected, onSelect }) 
 
   return (
     <>
-      <h1 className="text-2xl font-bold text-primary-blue mb-4 text-center font-mono px-2">
+  <h1 className="text-2xl font-bold text-primary-blue mb-4 text-center font-sporty px-2">
         🥅 ¿QUÉ GESTO ES ESTE? 🥅
       </h1>
       
-      <div className="card-modern p-4 rounded-xl mb-4 mx-2">
+  <div className="card-modern p-4 rounded-xl mb-4 mx-2 font-sporty">
         {question?.image_path ? (
           <div className="relative">
             {imageLoading && (
-              <div className="w-48 h-48 flex items-center justify-center bg-gray-800 mx-auto rounded-lg border-2 border-gray-600">
-                <span className="text-gray-400 font-mono text-sm animate-pulse">CARGANDO...</span>
+              <div className="w-48 h-48 flex items-center justify-center bg-gray-200 mx-auto rounded-lg border-2 border-primary-blue">
+                <span className="text-gray-400 font-sporty text-sm animate-pulse">CARGANDO...</span>
               </div>
             )}
             <Image
@@ -47,14 +47,14 @@ export default function QuestionCard({ question, options, selected, onSelect }) 
               priority
             />
             {imageError && (
-              <div className="w-48 h-48 flex items-center justify-center bg-gray-800 mx-auto rounded-lg border-2 border-gray-600">
-                <span className="text-gray-400 font-mono text-sm">ERROR DE IMAGEN</span>
+              <div className="w-48 h-48 flex items-center justify-center bg-gray-200 mx-auto rounded-lg border-2 border-primary-blue">
+                <span className="text-gray-400 font-sporty text-sm">ERROR DE IMAGEN</span>
               </div>
             )}
           </div>
         ) : (
-          <div className="w-48 h-48 flex items-center justify-center bg-gray-800 mx-auto rounded-lg border-2 border-gray-600">
-            <span className="text-gray-400 font-mono text-sm">SIN IMAGEN</span>
+          <div className="w-48 h-48 flex items-center justify-center bg-gray-200 mx-auto rounded-lg border-2 border-primary-blue">
+            <span className="text-gray-400 font-sporty text-sm">SIN IMAGEN</span>
           </div>
         )}
       </div>
@@ -63,19 +63,19 @@ export default function QuestionCard({ question, options, selected, onSelect }) 
         {options.map((option, index) => (
           <button
             key={option.id}
-            className={`py-3 px-4 rounded-lg border-2 text-base font-bold transition-all transform active:scale-95 font-sans
+            className={`py-3 px-4 rounded-lg border-2 text-base font-bold transition-all transform active:scale-95 font-sporty
               ${selected
                 ? option.id === question.id
                   ? "bg-green-600 border-green-400 text-white shadow-lg shadow-green-500/50 animate-pulse"
                   : option.id === selected.id
                   ? "bg-red-600 border-red-400 text-white shadow-lg shadow-red-500/50"
-                  : "bg-gray-700 border-gray-500 text-gray-400"
+                  : "bg-gray-200 border-gray-400 text-gray-400"
                 : "btn-secondary active:scale-95"}
             `}
             onClick={() => handleOptionSelect(option)}
             disabled={!!selected}
           >
-            <span className="text-gold font-mono mr-2">
+            <span className="text-gold font-sporty mr-2">
               {String.fromCharCode(65 + index)}.
             </span>
             {option.name}

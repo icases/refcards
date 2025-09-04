@@ -11,7 +11,7 @@ export async function fetchAllGestures() {
     
     const { data, error } = await supabase
       .from("gestures")
-      .select("id, name, description, image_path");
+      .select("id, name, description, image_path, minor_major, canupgradetomajor, penaltytime, isstickpenalty");
     
     console.log("Supabase query result:", { data, error });
     

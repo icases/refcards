@@ -1,0 +1,14 @@
+Con los siguientes datos de un gesto de árbitro de hockey linea:
+
+{{gesture}}
+
+Genera una pregunta de opción múltiple para jugadores jóvenes sobre este gesto. La pregunta y las 4 opciones de respuesta deben estar en español: una respuesta correcta y tres opciones plausibles pero incorrectas. Formato de salida:
+
+Pregunta: <texto de la pregunta>
+A) <opción 1>
+B) <opción 2>
+C) <opción 3>
+D) <opción 4>
+Respuesta correcta: <A/B/C/D>
+
+Usa un lenguaje claro y sencillo. Manten la pregunta y las respuestras breves

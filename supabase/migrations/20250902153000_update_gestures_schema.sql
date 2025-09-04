@@ -13,4 +13,3 @@ alter table gestures enable row level security;
 alter table gestures add constraint gestures_name_key unique (name);
 -- Add unique constraint to id column
 alter table gestures add constraint gestures_id_key unique (id);
-alter table gestures add primary key (id);

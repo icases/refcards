@@ -3,7 +3,7 @@
 export default function ResultModal({ 
   show, 
   result, 
-  question, 
+  gesture, 
   streak, 
   hearts, 
   onNextQuestion 
@@ -19,19 +19,19 @@ export default function ResultModal({
           {result.includes("Correcto") ? "🎯 ¡CORRECTO!" : "❌ ¡INCORRECTO!"}
         </div>
         
-  <div className="text-lg font-bold text-gold mb-2 text-center font-sporty">
-          {question.name}
+        <div className="text-lg font-bold text-gold mb-2 text-center font-sporty">
+          {gesture?.name}
         </div>
         
-  <div className="text-gray-600 mb-4 text-center leading-relaxed font-sporty text-sm">
-          {question.description}
+        <div className="text-gray-600 mb-4 text-center leading-relaxed font-sporty text-sm">
+          {gesture?.description}
         </div>
 
-  <div className="mb-4 text-center text-xs text-gray-500 font-sporty">
-          <div><span className="font-bold text-gold">Tipo de sanción:</span> {question.minor_major === 'minor' ? 'Menor' : question.minor_major === 'major' ? 'Mayor' : 'Ninguna'}</div>
-          <div><span className="font-bold text-gold">Tiempo de penalización:</span> {question.penaltytime ? `${question.penaltytime} min` : 'N/A'}</div>
-          <div><span className="font-bold text-gold">¿Puede convertirse en mayor?:</span> {question.canupgradetomajor ? 'Sí' : 'No'}</div>
-          <div><span className="font-bold text-gold">¿Penalización con stick?:</span> {question.isstickpenalty ? 'Sí' : 'No'}</div>
+        <div className="mb-4 text-center text-xs text-gray-500 font-sporty">
+          <div><span className="font-bold text-gold">Tipo de sanción:</span> {gesture?.minor_major === 'minor' ? 'Menor' : gesture?.minor_major === 'major' ? 'Mayor' : 'Ninguna'}</div>
+          <div><span className="font-bold text-gold">Tiempo de penalización:</span> {gesture?.penaltytime ? `${gesture.penaltytime} min` : 'N/A'}</div>
+          <div><span className="font-bold text-gold">¿Puede convertirse en mayor?:</span> {gesture?.canupgradetomajor ? 'Sí' : 'No'}</div>
+          <div><span className="font-bold text-gold">¿Penalización con stick?:</span> {gesture?.isstickpenalty ? 'Sí' : 'No'}</div>
         </div>
         
         {result.includes("Correcto") && streak > 0 && streak % 5 === 0 && hearts < 3 && (

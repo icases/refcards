@@ -5,17 +5,17 @@ import GameStats from '../../components/GameStats';
 import QuestionCard from '../../components/QuestionCard';
 import ResultModal from '../../components/ResultModal';
 import ArcadeLeaderboard from '../../components/ArcadeLeaderboard';
-import { fetchAllGestures, savePlayerScore, fetchLeaderboard } from '../../utils/dbQueries';
-import { shuffle } from '../../utils/arrayUtils';
+import { fetchLeaderboard, savePlayerScore } from '../../utils/dbQueries';
 import { checkIsHighScore } from '../../utils/scoreUtils';
 
 export default function GamePageClient() {
+  const [questionKey, setQuestionKey] = useState(1);
   const router = useRouter();
-  const [question, setQuestion] = useState(null);
-  const [options, setOptions] = useState([]);
   const [selected, setSelected] = useState(null);
+  const [correctIdx, setCorrectIdx] = useState(null);
+  const [gesture, setGesture] = useState(null);
   const [result, setResult] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [hearts, setHearts] = useState(3);
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
@@ -26,42 +26,7 @@ export default function GamePageClient() {
   const [leaderboard, setLeaderboard] = useState([]);
   const [loadingLeaderboard, setLoadingLeaderboard] = useState(false);
 
-  async function fetchQuestion() {
-    setLoading(true);
-    setResult(null);
-    setSelected(null);
-    
-    try {
-      const { data, error } = await fetchAllGestures();
-      
-      if (error) {
-        setLoading(false);
-        setQuestion(null);
-        return;
-      }
-      
-      if (!data || data.length < 3) {
-        console.log("Not enough data:", data);
-        setLoading(false);
-        setQuestion(null);
-        return;
-      }
-      
-      // Randomly pick 3 gestures
-      const shuffledData = shuffle(data);
-      const selectedGestures = shuffledData.slice(0, 3);
-      
-      // Pick one as the correct answer
-      const correct = selectedGestures[0];
-      setQuestion(correct);
-      setOptions(shuffle(selectedGestures));
-      setLoading(false);
-    } catch (err) {
-      console.error("Connection error:", err);
-      setLoading(false);
-      setQuestion(null);
-    }
-  }
+  // No need to fetch gestures manually, QuestionCard fetches from Edge Function
 
   async function loadLeaderboard() {
     setLoadingLeaderboard(true);
@@ -77,9 +42,7 @@ export default function GamePageClient() {
     setLoadingLeaderboard(false);
   }
 
-  useEffect(() => {
-    fetchQuestion();
-  }, []);
+  // Remove gesture fetching effect
 
   useEffect(() => {
     if (gameOver) {
@@ -87,32 +50,27 @@ export default function GamePageClient() {
     }
   }, [gameOver]);
 
-  function handleSelect(option) {
-    setSelected(option);
-    const isCorrect = option.id === question.id;
-    
+  function handleSelect(selectedIdx, correctIdxFromQuestion, gestureObj) {
+    setSelected(selectedIdx);
+    setCorrectIdx(correctIdxFromQuestion);
+    setGesture(gestureObj);
+    const isCorrect = selectedIdx === correctIdxFromQuestion;
     if (isCorrect) {
       setResult("¡Correcto!");
       setScore(score + 1);
       setStreak(streak + 1);
-      
-      // Restore heart every 5 correct answers in a row (max 3 hearts)
       if ((streak + 1) % 5 === 0 && hearts < 3) {
         setHearts(hearts + 1);
       }
     } else {
       setResult("Incorrecto");
-      setStreak(0); // Reset streak
+      setStreak(0);
       setHearts(hearts - 1);
-      
-      // Check game over
       if (hearts - 1 <= 0) {
         setGameOver(true);
         return;
       }
     }
-    
-    // Show modal with description
     setShowModal(true);
   }
 
@@ -120,7 +78,9 @@ export default function GamePageClient() {
     setShowModal(false);
     setSelected(null);
     setResult(null);
-    fetchQuestion();
+    setCorrectIdx(null);
+    setGesture(null);
+    setQuestionKey(prev => prev + 1); // Force QuestionCard to remount and fetch new question
   }
 
   function resetGame() {
@@ -249,56 +209,22 @@ export default function GamePageClient() {
     );
   }
   
-  if (!question) {
-    return (
-      <div className="min-h-screen bg-bg-dark flex flex-col items-center justify-center text-center p-6">
-        <div className="card-modern p-8 rounded-xl">
-          <div className="text-accent-red text-2xl mb-4 font-sporty font-bold">
-            ❌ ERROR AL CARGAR PREGUNTA ❌
-          </div>
-          <div className="text-gray-500 mb-4 font-sporty">Esto puede ser debido a:</div>
-          <ul className="text-gray-400 text-left mb-6 space-y-1 font-sporty">
-            <li>• Base de datos de gestos vacía</li>
-            <li>• Error de conexión a Supabase</li>
-            <li>• Problema con variables de entorno</li>
-          </ul>
-          <button 
-            className="btn-primary py-3 px-6 font-sporty"
-            onClick={fetchQuestion}
-          >
-            🔄 INTENTAR DE NUEVO
-          </button>
-        </div>
-      </div>
-    );
-  }
+  // Remove unused question error fallback; QuestionCard handles its own loading and error states
 
   return (
   <div className="min-h-screen bg-bg-dark flex flex-col items-center justify-start p-2 py-4 font-sporty">
       <GameStats hearts={hearts} score={score} streak={streak} />
       
       <QuestionCard 
-        question={question}
-        options={options}
+        key={questionKey}
+        questionKey={questionKey}
         selected={selected}
         onSelect={handleSelect}
       />
-      
-      {result && (
-        <div className={`mt-3 text-xl font-bold text-center font-sporty ${
-          result.includes("Correcto") ? "text-primary-blue animate-pulse" : "text-red-500"
-        }`}>
-          {result.includes("Correcto") ? "🎯 ¡CORRECTO!" : "❌ ¡INCORRECTO!"}
-          {result.includes("Correcto") && streak > 0 && streak % 5 === 0 && hearts < 3 && (
-            <div className="text-sm text-accent-orange mt-1 animate-pulse font-sporty">🏒 ¡VIDA RESTAURADA!</div>
-          )}
-        </div>
-      )}
-      
       <ResultModal 
         show={showModal}
         result={result}
-        question={question}
+        gesture={gesture}
         streak={streak}
         hearts={hearts}
         onNextQuestion={handleNextQuestion}

@@ -63,9 +63,7 @@ export default function QuestionCard({ selected, onSelect, questionKey }) {
   const { gesture, question } = questionData;
   return (
     <>
-      <h1 className="text-2xl font-bold text-primary-blue mb-4 text-center font-sporty px-2">
-        🥅 Pregunta sobre gesto arbitral 🥅
-      </h1>
+     
       <div className="card-modern p-4 rounded-xl mb-4 mx-2 font-sporty">
         {gesture?.image_path ? (
           <div className="relative">

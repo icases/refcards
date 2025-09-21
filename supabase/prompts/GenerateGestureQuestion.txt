@@ -2,7 +2,15 @@ Con los siguientes datos de un gesto de árbitro de hockey linea:
 
 {{gesture}}
 
-Genera una pregunta de opción múltiple para jugadores jóvenes sobre este gesto. La pregunta y las 4 opciones de respuesta deben estar en español: una respuesta correcta y tres opciones plausibles pero incorrectas. Formato de salida:
+Genera una pregunta de opción múltiple para jugadores jóvenes sobre este gesto. La pregunta y las 4 opciones de respuesta deben estar en español: una respuesta correcta y tres opciones plausibles pero incorrectas. 
+
+IMPORTANTE: La pregunta NO debe contener la descripción de la acción o comportamiento que representa el gesto. No incluyas en la pregunta palabras o frases que revelen directamente la respuesta correcta. En su lugar, haz preguntas sobre:
+- ¿Qué significa este gesto del árbitro?
+- ¿Qué penalización se aplica por este gesto?
+- ¿Qué tipo de falta representa este gesto?
+- ¿Cuánto tiempo de penalización corresponde?
+
+Formato de salida:
 
 Pregunta: <texto de la pregunta>
 A) <opción 1>

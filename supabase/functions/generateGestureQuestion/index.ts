@@ -49,6 +49,12 @@ Usa únicamente la información proporcionada en los datos del gesto para genera
 No inventes detalles que no estén presentes en los datos. 
 No incluyas en nombre del gesto en la pregunta, aunque puedes incluirla en la resupuesta.
 
+IMPORTANTE: La pregunta NO debe contener la descripción de la acción o comportamiento que representa el gesto. No incluyas en la pregunta palabras o frases que revelen directamente la respuesta correcta. En su lugar, haz preguntas sobre:
+- ¿Qué significa este gesto del árbitro?
+- ¿Qué penalización se aplica por este gesto?
+- ¿Qué tipo de falta representa este gesto?
+- ¿Cuánto tiempo de penalización corresponde?
+
 Genera una pregunta de opción múltiple para jugadores jóvenes sobre este gesto. 
 La pregunta y las 4 opciones de respuesta deben estar en español: una respuesta correcta y tres opciones plausibles pero incorrectas. 
 El índice de la respuesta correcta (correct) debe ser aleatorio entre 0 y 3, y las respuestas deben estar mezcladas en orden aleatorio.
@@ -57,7 +63,7 @@ Devuelve la respuesta en formato JSON con las siguientes claves:
  answers (array), 
  correct (índice de la respuesta correcta, empezando en 0).
 
-Ejemplos:
+Ejemplos de preguntas correctas (que NO contienen la respuesta):
 {
   "question": "¿Qué significa el gesto mostrado?",
   "answers": ["Empujar con el stick", "Golpear con el stick", "Interferir con el stick", "Defender con el stick"],
